@@ -15,7 +15,7 @@ header, footer {
 
 main {
     width: 400px;
-    margin: 30px auto 0px auto;
+    margin: 10px auto 0px auto;
 }
 
 form {
@@ -33,7 +33,14 @@ label {
     margin-bottom: 10px;
 }
 
-
+h1 {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 50px;
+    color: crimson
+}
 
 input {
     font-family: "Roboto", serif;
