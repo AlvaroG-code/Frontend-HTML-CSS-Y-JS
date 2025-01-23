@@ -1,4 +1,8 @@
 //JS Para el juego MasterDots//
 
-//test//
-mostrarDatosUsuario();
+//Capturamos datos del usuario//
+getDatosUsuario();
+//Comprobamos los datos//
+if(!comprobacionDatosUsuario()) {
+    window.location.href = "index.html";
+}
