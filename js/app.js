@@ -12,6 +12,7 @@ let avatarContainer;
 
 
 
+
 //funcion de evento//
 function comprobarForm(event) {
     //comprobar cambios//
@@ -27,7 +28,7 @@ function comprobarForm(event) {
         return false;
     }
      //informacion es correcta//
-    datosUsuario(nickInput, tamanotInput, emailInput);
+    datosUsuario(nickInput, tamanotInput, emailInput, avatarContainer);
     historicoUsuarios(nickInput);
     return true;  
 }
