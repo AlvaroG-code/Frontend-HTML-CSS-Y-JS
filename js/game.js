@@ -1,5 +1,8 @@
 //JS Para el juego MasterDots//
 
+//variables globales//
+let iniciadoMarcado = false;
+
 //funcion que genera numeros ramdos entre 0 y max//
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -27,6 +30,39 @@ function pintarPanelJuego() {
     document.getElementById("juego").innerHTML = items;
 }
 
+//funcion mousedown//
+function programarEventosJuego() {
+    const items = document.getElementsByClassName('item');
+    for (let item of items) {
+        item.addEventListener('mousedown', comenzarMarcar);
+        item.addEventListener('mouseover', continuarMarcando);
+    }
+}
+
+//funciones del juego//
+//iniciar el marcado de los dots//
+function comenzarMarcar(event) {
+    let item = event.target;
+    let containerItem = event.target.parentElement;
+    if(item.classList.contains('rojo')) containerItem.classList.add('rojo');
+    else containerItem.classList.add('verde');
+    if(!iniciadoMarcado) iniciadoMarcado = true;
+    console.log("se ha pinchado");
+}
+
+//Evento Mainover//
+function continuarMarcando(event) {
+    if(iniciadoMarcado) {
+    let item = event.target;
+    let containerItem = event.target.parentElement;
+    if(item.classList.contains('rojo')) containerItem.classList.add('rojo');
+    else containerItem.classList.add('verde');
+    }
+    console.log("pasando por el circulo");
+}
+
+
+
 //Capturamos datos del usuario//
 getDatosUsuario();
 //Comprobamos los datos//
@@ -37,3 +73,4 @@ if(!comprobacionDatosUsuario()) {
 //rellenamos el formulario//
 rellenarFormularioUsuario();
 pintarPanelJuego();
+programarEventosJuego();
