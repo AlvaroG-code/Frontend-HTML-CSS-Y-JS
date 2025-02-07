@@ -6,6 +6,7 @@ let adyacentes = [];
 let idMarcador = [];
 let classMarcada;
 let tamanoPanel;
+let idInterval;
 
 //funcion que genera numeros ramdos entre 0 y max//
 function getRandomInt(max) {
@@ -52,6 +53,27 @@ function calcularAdyacentes(idMarcado) {
     }
 }
 
+//funcion de cuenta atras//
+function cuentaAtras() {
+    let tiempoRestante = parseInt(document.getElementById("tiempo").value)-1;
+    document.getElementById("tiempo").value = tiempoRestante;
+    if(tiempoRestante==0) {
+        clearInterval(idInterval);
+        //finalizar todos los eventos//
+        const items = document.getElementsByClassName('item');
+        for (let item of items) {
+            item.removeEventListener('mousedown', comenzarMarcar);
+            item.removeEventListener('mouseover', continuarMarcando);
+    }
+    document.removeEventListener('mouseup', finalizarMarcado);
+    //Cambiar z-index paneles//
+    document.getElementById("juegoAcabado").classList.add('juegoAcabadoColor');
+    document.getElementById("juegoAcabado").style.zIndex = "2";
+    document.getElementById("juego").style.zIndex = "1";
+    document.getElementById("nuevaPartida").addEventListener("click", (event) => location.reload());
+    }
+}
+
 
 //funcion de eventos del raton del juego//
 function programarEventosJuego() {
@@ -61,6 +83,8 @@ function programarEventosJuego() {
         item.addEventListener('mouseover', continuarMarcando);
     }
     document.addEventListener('mouseup', finalizarMarcado);
+    //cuenta atras//
+    idInterval =  setInterval(cuentaAtras, 1000);
 }
 
 //funciones del juego//
