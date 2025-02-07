@@ -30,13 +30,14 @@ function pintarPanelJuego() {
     document.getElementById("juego").innerHTML = items;
 }
 
-//funcion mousedown//
+//funcion de eventos del raton del juego//
 function programarEventosJuego() {
     const items = document.getElementsByClassName('item');
     for (let item of items) {
         item.addEventListener('mousedown', comenzarMarcar);
         item.addEventListener('mouseover', continuarMarcando);
     }
+    document.addEventListener('mouseup', finalizarMarcado);
 }
 
 //funciones del juego//
@@ -59,6 +60,12 @@ function continuarMarcando(event) {
     else containerItem.classList.add('verde');
     }
     console.log("pasando por el circulo");
+}
+
+//Evento Mouseup//
+function finalizarMarcado(event) {
+    iniciadoMarcado = false;
+    console.log("se ha soltado");
 }
 
 
