@@ -105,6 +105,11 @@ select {
     margin-bottom: 10px;
 }
 
+#logo {
+    filter: brightness(1.1);
+    mix-blend-mode: multiply;
+}
+
 /*Grid avatar*/
 .avatarItem {
     background-color: #fff;
